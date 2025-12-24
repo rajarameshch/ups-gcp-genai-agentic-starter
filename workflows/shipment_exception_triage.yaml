@@ -1,0 +1,20 @@
+id: shipment_exception_triage
+name: Shipment Exception Triage
+description: Detect exceptions and propose actions.
+inputs:
+  - tracking_id
+steps:
+  - tool: track_shipment
+    args:
+      tracking_id: "{{tracking_id}}"
+  - decision:
+      when: "{{tool.track_shipment.status}} contains 'Exception'"
+      then:
+        - tool: lookup_policy
+          args:
+            topic: "exception handling"
+        - output:
+            recommendation: "Offer options: re-route, hold, pickup; if lost/damaged initiate claim."
+      else:
+        - output:
+            recommendation: "Share ETA + last scan."

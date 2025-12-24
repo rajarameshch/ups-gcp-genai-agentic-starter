@@ -1,0 +1,15 @@
+id: claims_intake
+name: Claims Intake
+description: Draft a claim and request supporting details.
+inputs:
+  - tracking_id
+  - issue
+  - contact_email
+steps:
+  - tool: create_claim
+    args:
+      tracking_id: "{{tracking_id}}"
+      issue: "{{issue}}"
+      contact_email: "{{contact_email}}"
+  - output:
+      next: "collect_supporting_docs"

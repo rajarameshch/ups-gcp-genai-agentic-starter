@@ -1,0 +1,11 @@
+id: billing_refund_policy
+name: Billing/Refund Policy Lookup
+description: Policy lookup workflow (stub).
+inputs:
+  - topic
+steps:
+  - tool: lookup_policy
+    args:
+      topic: "{{topic}}"
+  - output:
+      note: "In production, use an approved policy KB + RAG index."

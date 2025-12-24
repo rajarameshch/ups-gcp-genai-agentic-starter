@@ -1,0 +1,28 @@
+services:
+  api-gateway:
+    build: ./services/api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - AGENT_SERVICE_URL=http://agent-service:8081
+      - RETRIEVAL_SERVICE_URL=http://retrieval-service:8082
+    depends_on:
+      - agent-service
+      - retrieval-service
+
+  agent-service:
+    build: ./services/agent-service
+    ports:
+      - "8081:8081"
+    environment:
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT:-}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION:-us-central1}
+      - VERTEX_MODEL=${VERTEX_MODEL:-gemini-1.5-pro}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+
+  retrieval-service:
+    build: ./services/retrieval-service
+    ports:
+      - "8082:8082"
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}

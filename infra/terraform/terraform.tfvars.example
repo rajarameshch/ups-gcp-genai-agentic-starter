@@ -1,0 +1,8 @@
+project_id = "your-gcp-project-id"
+region     = "us-central1"
+env        = "dev"
+
+# After you build images, update these with your project id
+api_gateway_image      = "us-docker.pkg.dev/your-gcp-project-id/ups-genai/api-gateway:latest"
+agent_service_image    = "us-docker.pkg.dev/your-gcp-project-id/ups-genai/agent-service:latest"
+retrieval_service_image= "us-docker.pkg.dev/your-gcp-project-id/ups-genai/retrieval-service:latest"

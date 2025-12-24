@@ -1,0 +1,8 @@
+-r services/api-gateway/requirements.txt
+-r services/agent-service/requirements.txt
+-r services/retrieval-service/requirements.txt
+
+pytest==8.3.3
+httpx==0.28.1
+ruff==0.7.4
+python-dotenv==1.0.1
