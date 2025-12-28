@@ -18,18 +18,8 @@ It includes:
 
 ## Architecture (high level)
 
-```
-Client/UI
-  |
-  v
-api-gateway (FastAPI)  ---> retrieval-service (FastAPI) ---> GCS / BigQuery (optional)
-  |
-  v
-agent-service (FastAPI + LangGraph) ---> Vertex AI (optional) + Tools (stubs)
-  |
-  v
-Pub/Sub events (optional) ---> workflow runner
-```
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/86fbc3d9-3e11-4cbf-8b0d-a73ad770c8df" />
+
 
 ---
 
